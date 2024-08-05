@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCCBF Events</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5dc;
+            font-family: Arial, sans-serif;
+        }
+
+        h1, h2, h3 {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+        }
+        
+        h4{
+            justify-content: center;
+            color: #121315;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .main-head {
+            margin-top: 4rem;
+            margin-bottom:3rem;
+            color: #333;
+        }
+
+        .headings {
+            display: flex;
+            justify-content: left;
+            position: relative;
+            left: 170px;
+            top: 20px;
+            width: 1200px;
+            /* color: #121315; */
+        }
+
+        #past-events .event-card {
+            background-color: #f3f3f3;
+        }
+
+        #event-day-container {
+            position: relative;
+        }
+
+        .event-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 1200px;
+            color: #666;
+        }
+
+        .event-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 16px;
+            background-color: #fff;
+            transition: background-color 0.3s, transform 0.3s;
+            flex: 1 1 calc(33.333% - 20px);
+            box-sizing: border-box;
+            margin-bottom: 3rem;
+            max-width: 1200px;
+            max-height: 180px;
+        }
+
+        .event-card:hover {
+            background-color: #e0ffe0;
+            transform: scale(1.02);
+        }
+
+        .event-card h4 {
+            font-size: 1.25rem;
+            margin-top: 0;
+        }
+
+        .event-card p {
+            margin: 0.5rem 0;
+        }
+
+        /* Navigation Bar Styling */
+        .bar {
+            position: relative;
+            background-color: #121315;
+            width: 100%;
+            height: 55px;
+            z-index: 2;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .main-logo {
+            position: relative;
+            right: 0px;
+            width: 250px;
+            height: 135px;
+            z-index: 5;
+            bottom: 43px;
+        }
+
+        .bar-attributes {
+            position: absolute;
+            font-family: sans-serif;
+            color: #ffffff;
+            height: auto;
+            width: 700px;
+            top: 18px;
+            z-index: 5;
+            left: 700px;
+            font-size: 17px;
+        }
+
+        .bar-attributes a {
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .bar-attributes a:hover {
+            /* text-decoration: underline; */
+        }
+
+        .form, .event {
+            position: relative;
+        }
+
+        .form {
+            left: 80px;
+        }
+
+        .event {
+            left: 160px;
+        }
+
+        .home:hover, .form:hover, .event:hover, .features:hover {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            color: #000000;
+            background-color: white;
+            border-radius: 2px;
+        }
+
+        .dropdown {
+            display: inline-block;
+            position: relative;
+            left: 240px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: #000000;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .content {
+            z-index: 0;
+        }
+
+        /* Footer Styling */
+        footer {
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+            height: auto;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .footer-content ul {
+            font-family: Arial, sans-serif;
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-content ul li {
+            display: inline;
+            margin: 0 0.5rem;
+        }
+
+        .footer-content ul :hover {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            color: #000000;
+            background-color: white;
+            border-radius: 2px;
+        }
+
+        .footer-content ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        footer p {
+            font-size: 15px;
+            color: white;
+        }
+
+        /* Modal Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 700px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .modal-header h4 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+        }
+
+        .modal-body {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Slideshow CSS */
+        * { box-sizing: border-box }
+        body { font-family: Verdana, sans-serif; margin: 0 }
+        .mySlides { display: none }
+        img { vertical-align: middle; }
+
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 1200px;
+            position: relative;
+            margin: auto;
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Caption text */
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Fading animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from { opacity: .4 } 
+            to { opacity: 1 }
+        }
+
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+            .prev, .next, .text { font-size: 11px }
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="bar">
+            <a href="index.html"><img class="main-logo" src="./Assets/file (1).png" alt="SCCBF Logo"></a>
+            <div class="bar-attributes">   
+                <a href="index.html"><span class="home">Home</span></a>
+                <a href="newfile.html"><span class="form">Community</span></a> 
+                <a href="sample.html"><span class="event">Events</span></a> 
+                <!-- Features Dropdown -->
+                <div class="dropdown">
+                    <span class="features">Features</span>
+                    <div class="dropdown-content">
+                        <a href="Smart Solutions.html#solar">Solar Calculator</a>
+                        <a href="#feature2">Feature 2</a>
+                    </div>
+                </div>
+            </div>   
+        </div>
+
+        <div class="content">
+            <h1 class="main-head">Event Calendar</h1>
+            
+            <div id="event-day-container">
+                <h1 class="headings">Event Day</h1>
+                <div class="event-list" id="event-day">
+                    <!-- Events happening today will be dynamically inserted here -->
+                </div>
+            </div>
+            
+            <div class="slideshow-container">
+                
+                <div class="mySlides fade">
+                    <img src="./Assets/pexels-gabby-k-5384621 (1).jpg" style="width:100%" alt="">
+                </div>
+        
+                <div class="mySlides fade">
+                    <img src="./Assets/solar-4478105_1920 (1).jpg" style="width:100%" alt="">
+                </div>
+        
+                <div class="mySlides fade">
+                    <img src="./Assets/pexels-laura-penwell-309923-3608056 (1).jpg" style="width:100%" alt>
+                </div>
+        
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+                
+            </div>    
+            
+
+            <h1 class="headings">Upcoming Events</h1>
+            <div class="event-list" id="upcoming-events">
+                <!-- Upcoming events will be dynamically inserted here -->
+                <p id="no-upcoming-events" style="display:none;">No upcoming events at this time.</p>
+            </div>
+
+            <h1 class="headings">Past Events</h1>
+            <div class="event-list" id="past-events">
+                <!-- Past events will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2024 Sustainable Cities and Communities for a Better Future. All Rights Reserved.</p>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+                <p>Email: <a href="mailto:bccbf@example.com">bccbf@example.com</a></p>
+                <p>Address: 123 Green Street, Eco City</p>
+                <p>Phone: (123) 456-7890</p>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Modal -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Today's Events</h4>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body" id="modal-event-content"></div>
+        </div>
+    </div>
+
+    <script>
+        const events = [
+            { title: "Green City Workshop", date: "2024-08-05", description: "Join us for a workshop on sustainable urban planning and green city initiatives." },
+            { title: "Community Solar Panel Installation", date: "2024-08-6", description: "A community event focused on installing solar panels in local neighborhoods." },
+            { title: "Eco-Friendly Transportation Seminar", date: "2024-08-15", description: "Learn about the latest advancements in eco-friendly transportation solutions." },
+            { title: "Recycling and Waste Management Fair", date: "2024-07-01", description: "A fair dedicated to recycling, waste management, and reducing environmental impact." },
+            { title: "Urban Gardening Expo", date: "2024-07-15", description: "Explore urban gardening techniques and how they contribute to sustainable communities." }
+        ];
+
+        const upcomingEventsContainer = document.getElementById('upcoming-events');
+        const eventDayContainer = document.getElementById('event-day');
+        const pastEventsContainer = document.getElementById('past-events');
+        const eventDaySection = document.getElementById('event-day-container');
+        const noUpcomingEvents = document.getElementById('no-upcoming-events');
+
+        const currentDate = new Date().toDateString();
+
+        let hasUpcomingEvents = false;
+        let isEventDay = false;
+
+        let todayEvents = []; // Store today's events for modal
+
+        events.forEach(event => {
+            const eventDate = new Date(event.date).toDateString();
+            const eventCard = document.createElement('div');
+            eventCard.classList.add('event-card');
+            eventCard.innerHTML = `
+                <h4>${event.title}</h4>
+                <p>Date: ${eventDate}</p>
+                <p>${event.description}</p>
+            `;
+
+            if (eventDate === currentDate) {
+                eventDayContainer.appendChild(eventCard);
+                todayEvents.push(eventCard.innerHTML); // Collect today's events
+                isEventDay = true;
+            } else if (new Date(event.date) > new Date()) {
+                upcomingEventsContainer.appendChild(eventCard);
+                hasUpcomingEvents = true;
+            } else {
+                pastEventsContainer.appendChild(eventCard);
+            }
+        });
+
+        if (!isEventDay) {
+            eventDaySection.style.display = 'none';
+        }
+
+        if (!hasUpcomingEvents) {
+            noUpcomingEvents.style.display = 'block';
+        }
+
+        // Show modal with today's events if any
+        function showTodayEventsModal() {
+            if (todayEvents.length > 0) {
+                const eventContent = todayEvents.join('<hr>'); // Join events with a separator
+                showModal(eventContent);
+            }
+        }
+
+        // Modal functionality
+        const modal = document.getElementById('eventModal');
+        const modalContent = document.getElementById('modal-event-content');
+        const closeModal = document.getElementsByClassName('close')[0];
+
+        function showModal(eventContent) {
+            modalContent.innerHTML = eventContent;
+            modal.style.display = 'block';
+        }
+
+        closeModal.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Automatically show modal on page load if there are events for today
+        window.onload = function() {
+            showTodayEventsModal();
+        }
+
+        // Slideshow functionality
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+        }
+    </script>
+</body>
+</html>

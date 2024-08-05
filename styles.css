@@ -1,0 +1,259 @@
+/* styles.css */
+
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5dc;
+}
+
+/* Navigation Bar Styling */
+.bar {
+    position: relative;
+    background-color: #121315;
+    width: 100%;
+    height: 55px;
+    z-index: 2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.main-logo {
+    position: relative;
+    right: 0px;
+    width: 250px;
+    height: 135px;
+    z-index: 5;
+    bottom: 43px;
+}
+
+.bar-attributes {
+    position: absolute;
+    font-family: sans-serif;
+    color: #ffffff;
+    height: auto;
+    width: 700px;
+    top: 18px;
+    z-index: 5;
+    left: 700px;
+    font-size: 17px;
+}
+
+.bar-attributes a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.bar-attributes a:hover {
+    /* text-decoration: underline; */
+}
+
+.form, .event {
+    position: relative;
+}
+
+.form {
+    left: 80px;
+}
+
+.event {
+    left: 160px;
+}
+
+.home:hover, .form:hover, .event:hover, .features:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    color: #000000;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.dropdown {
+    display: inline-block;
+    position: relative;
+    left: 240px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #000000;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.content {
+    z-index: 0;
+}
+
+/* Footer Styling */
+footer {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    height: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    margin-top: 5rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-content ul {
+    font-family: Arial, sans-serif;
+    list-style: none;
+    padding: 0;
+}
+
+.footer-content ul li {
+    display: inline;
+    margin: 0 0.5rem;
+}
+
+.footer-content ul :hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    color: #000000;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.footer-content ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+footer p {
+    font-size: 15px;
+    color: white;
+}
+
+main {
+    padding: 20px;
+}
+
+/* Forum Section */
+.forum-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.forum-posts {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 40px;
+}
+
+.post {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-header h2 {
+    margin: 0;
+}
+
+.timestamp {
+    font-size: 12px;
+    color: #777;
+}
+
+.replies {
+    display: none;
+    margin-top: 10px;
+}
+
+.reply {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.reply img.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.reply strong {
+    margin-right: 10px;
+}
+
+.new-post {
+    width: 100%;
+    max-width: 800px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.new-post h2 {
+    margin-top: 0;
+}
+
+.new-post form {
+    display: flex;
+    flex-direction: column;
+}
+
+.new-post form label {
+    margin: 10px 0 5px;
+}
+
+.new-post form input,
+.new-post form textarea {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.new-post form button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.new-post form button:hover {
+    background-color: #0056b3;
+}
